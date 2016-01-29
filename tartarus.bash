@@ -3,7 +3,7 @@ scriptdir="$(dirname "$0")"
 source $scriptdir/tartarus.inc
 logger -t $LOGTAG "script begins"
 logger -t $LOGTAG "Executing in $scriptdir"
-logger -t $LOGTAT "Running script that should run before the backup job"
+logger -t $LOGTAG "Running script that should run before the backup job"
 ./scriptdir/runbefore.bash
 $scriptdir/runbefore.bash 2>&1 | logger -t $LOGTAG
 for i in $( ls $basepath/*.conf); do
