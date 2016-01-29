@@ -1,6 +1,10 @@
 #!/bin/bash
+# modify to your needs
 # backup files are being deleted that are older than
+basepath="/etc/tartarus"
 ageindays=7
 ftppass=""
 ftpuser=""
 ftphost=""
+# modify only if you know what you're doing
+LOGTAG="tartarusbash"
