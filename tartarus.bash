@@ -5,8 +5,8 @@ scriptdir="$(dirname "$0")"
 # sourcing the variables from tartarus.inc
 source $scriptdir/tartarus.inc
 logger -t $LOGTAG "START"
-logger -t $LOGTAG "Running script prior to backup" 
-if [ -z $scriptdir/runbefore.bash ]; then
+if [ -f $scriptdir/runbefore.bash ]; then
+	logger -t $LOGTAG "Running script prior to backup" 
 	$scriptdir/runbefore.bash 2>&1 | logger -t $LOGTAG
 else
 	logger -t $LOGTAG "No jobs to run prior to backup"
@@ -19,9 +19,9 @@ for i in $( ls *.conf); do
 	/usr/sbin/charon.ftp --host $ftphost --user $ftpuser --password $ftppass --profile $profile --maxage $ageindays 2>&1 | logger -t $LOGTAG
 	/usr/sbin/tartarus $i 2>&1 | logger -t $LOGTAG
 done
-logger -t $LOGTAG "Running script after backup"
 # running jobs after backup finished
-if [ -z $scriptdir/runafter.bash ]; then
+if [ -f $scriptdir/runafter.bash ]; then
+	logger -t $LOGTAG "Running script after backup"
 	$scriptdir/runafter.bash 2>&1 | logger -t $LOGTAG
 else
 	logger -t $LOGTAG "No jobs to run after backup"
