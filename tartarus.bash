@@ -6,7 +6,11 @@ scriptdir="$(dirname "$0")"
 source $scriptdir/tartarus.inc
 logger -t $LOGTAG "START"
 logger -t $LOGTAG "Running script prior to backup" 
-$scriptdir/runbefore.bash 2>&1 | logger -t $LOGTAG
+if [ -z $scriptdir/runbefore.bash ]; then
+	$scriptdir/runbefore.bash 2>&1 | logger -t $LOGTAG
+else
+	logger -t $LOGTAG "No jobs to run prior to backup"
+fi
 # loop that runs through all conf files
 cd $basepath
 for i in $( ls *.conf); do
@@ -17,5 +21,9 @@ for i in $( ls *.conf); do
 done
 logger -t $LOGTAG "Running script after backup"
 # running jobs after backup finished
-$scriptdir/runafter.bash 2>&1 | logger -t $LOGTAG
+if [ -z $scriptdir/runafter.bash ]; then
+	$scriptdir/runafter.bash 2>&1 | logger -t $LOGTAG
+else
+	logger -t $LOGTAG "No jobs to run after backup"
+fi
 logger -t $LOGTAG "END"

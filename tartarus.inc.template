@@ -1,0 +1,6 @@
+#!/bin/bash
+# backup files are being deleted that are older than
+ageindays=7
+ftppass=""
+ftpuser=""
+ftphost=""
