@@ -6,6 +6,7 @@ backs up all *.conf tartarus profiles via ftp in one go and also deletes old fil
 * Here are some links:
  http://wertarbyte.de/tartarus.shtml
  http://wiki.hetzner.de/index.php/Tartarus_Backup-Konfiguration
+* git clone https://github.com/imp1sh/tartarusbash.git
 * cp tartarus.inc.template tartarus.inc
 * if you like:
 * cp runbefore.bash.template runbefore.bash and
