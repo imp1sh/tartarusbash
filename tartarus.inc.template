@@ -9,7 +9,7 @@ ftphost=""
 # give your hostname, not fqdn
 hostnameshort=""
 # give shortcut names to what you would like to save
-backuplist="etc opt root usrlocal"
+backuplist="etc opt root usrlocal varvmail"
 
 # modify only if you know what you're doing
 LOGTAG="tartarusbash"

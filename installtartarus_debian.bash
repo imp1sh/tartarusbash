@@ -88,9 +88,12 @@ fi
 for backupelement in $backuplist; do
 	together=${hostnameshort}_${backupelement}
 	echo $together
-	if [ ! -f "$basepath/$hostnameshort_$backupelement.conf" ]; then
+	if [ ! -f "$basepath/$together.conf" ]; then
 		if [ "$backupelement" = "usrlocal" ]; then
 			backupelement="usr/local"
+		fi
+		if [ "$backupelement" = "varvmail" ]; then
+			backupelement="var/vmail"
 		fi
 		cat <<EOF > "$basepath/$together.conf"
 # $basepath/$together.conf
